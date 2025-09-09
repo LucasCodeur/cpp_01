@@ -13,7 +13,7 @@
 .PHONY : all clean fclean re
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = BraiiiiiiinnnzzzZ
+NAME = Moarbrainz!
 
 P_SRC = src/
 P_OBJ = .obj/
@@ -21,8 +21,7 @@ P_INC = inc/
 
 SRC = main.cpp \
 	  Zombie.cpp \
-	  newZombie.cpp \
-	  ramdomChump.cpp 
+	  zombieHorde.cpp
 
 INC = \
 	Zombie.hpp \
