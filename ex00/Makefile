@@ -1,0 +1,62 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/07/18 12:51:21 by lud-adam          #+#    #+#              #
+#    Updated: 2025/09/09 12:14:38 by lud-adam         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+.PHONY : all clean fclean re
+CC = g++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = BraiiiiiiinnnzzzZ
+
+P_SRC = src/
+P_PARSING = src/parsing/
+P_OBJ = .obj/
+P_INC = inc/
+
+SRC = main.cpp \
+	  Zombie.cpp \
+	  newZombie.cpp \
+	  ramdomChump.cpp 
+
+INC = \
+	Zombie.hpp \
+
+SRCS = \
+	$(addprefix $(P_SRC), $(SRC)) \
+
+INCS = $(addprefix $(P_INC), $(INC)) \
+
+OBJS = $(subst $(P_SRC), $(P_OBJ), $(SRCS:.cpp=.o))
+
+Color_Off=\033[0m
+Green=\033[0;32m
+Red=\033[0;31m
+Cyan=\033[0;36m
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(INCS)
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) && \
+	echo "$(Green)Creating executable $@$(Color_Off)" || \
+	echo "$(Red)Error creating $@$(Color_Off)"
+
+$(P_OBJ)%.o: $(P_SRC)%.cpp
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -I $(P_INC) -c $< -o $@ && \
+	echo "$(Cyan)Compiling $<$(Color_Off)" || \
+	echo "$(Red)Error compiling $<$(Color_Off)"
+
+clean:
+	rm -rf $(P_OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
