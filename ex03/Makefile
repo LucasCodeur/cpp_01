@@ -6,7 +6,7 @@
 #    By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/18 12:51:21 by lud-adam          #+#    #+#              #
-#    Updated: 2025/09/09 12:14:38 by lud-adam         ###   ########.fr        #
+#    Updated: 2025/09/10 11:17:33 by lud-adam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ P_INC = inc/
 SRC = main.cpp \
 	  Weapon.cpp \
 	  HumanA.cpp \
-	  HumanB.cpp \
+
+	  # HumanB.cpp \
 
 INC = \
 	  Weapon.hpp \
 	  HumanA.hpp \
-	  HumanB.hpp \
+
+	  # HumanB.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \
