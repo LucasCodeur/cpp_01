@@ -16,13 +16,9 @@
 #include <string>
 #include <iostream>
 
-HumanA::HumanA( std::string name, Weapon weapon )
-{
-	this->name = name;
-	this->Weapon(weapon);
-}
+HumanA::HumanA( std::string name, Weapon& weapon ) : name(name), weapon(weapon) {}
 
-void	HumanA::setWeapon( Weapon weapon )
+void	HumanA::setWeapon( Weapon &weapon )
 {
 	this->weapon = weapon;
 }

@@ -18,26 +18,26 @@
 
 HumanB::HumanB( std::string name )
 {
-	this->_name = name;
-	this->weapon = NULL;
+	this->name = name;
+	weapon = NULL;
 }
 
-void	HumanB::setWeapon( Weapon weapon )
+void	HumanB::setWeapon( Weapon& weapon )
 {
-	this->_weapon = weapon;
+	this->weapon = &weapon;
 }
 
 void	HumanB::setName( std::string name )
 {
-	this->_name = name;
+	this->name = name;
 }
 
 std::string	HumanB::getName( void )
 {
-	return(this->_name);
+	return(this->name);
 }
 
 void	HumanB::attack( void )
 {
-	std::cout << this->getName() << " attacks with their " << this->weapon.getType() << "\n";
+	std::cout << this->getName() << " attacks with their " << this->weapon->getType() << "\n";
 }

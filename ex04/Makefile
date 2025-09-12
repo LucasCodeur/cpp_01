@@ -10,10 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re debug
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 NAME = SedIsForLosers
+# Debugging flags
+CFLAGS_DEBUG = -Wall -Wextra -pthread -g3 -D DEBUG=1
 
 P_SRC = src/
 P_OBJ = .obj/
@@ -55,3 +57,12 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+#############################################################################################
+#                                                                                           #
+#                                           DEBUG                                           #
+#                                                                                           #
+#############################################################################################
+# Debugging rules
+debug:
+	@$(MAKE) $(NAME) CFLAGS="$(CFLAGS_DEBUG)"

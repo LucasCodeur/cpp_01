@@ -20,11 +20,11 @@ class	HumanB
 	public:
 		HumanB( std::string name );
 		std::string	getName( void );
-		void		setWeapon( Weapon club );
+		void		setWeapon( Weapon& club );
 		void		attack();
 	private:
 		std::string	name;
-		Weapon		weapon();
+		Weapon		*weapon;
 		void		setName( std::string name );
 };
 

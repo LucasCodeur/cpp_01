@@ -23,8 +23,8 @@ class	HumanA
 		void		attack();
 	private:
 		std::string	name;
-		Weapon		weapon;
-		void		setWeapon( Weapon club );
+		Weapon		&weapon;
+		void		setWeapon( Weapon &weapon );
 		void		setName( std::string name );
 };
 

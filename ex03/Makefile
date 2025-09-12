@@ -12,7 +12,7 @@
 
 .PHONY : all clean fclean re
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 NAME = UnnecessaryViolence
 
 P_SRC = src/
@@ -22,14 +22,12 @@ P_INC = inc/
 SRC = main.cpp \
 	  Weapon.cpp \
 	  HumanA.cpp \
-
-	  # HumanB.cpp \
+	  HumanB.cpp \
 
 INC = \
 	  Weapon.hpp \
 	  HumanA.hpp \
-
-	  # HumanB.hpp \
+	  HumanB.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

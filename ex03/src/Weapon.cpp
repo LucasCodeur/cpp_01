@@ -16,7 +16,7 @@
 
 Weapon::Weapon( std::string name )
 {
-	type = name;
+	this->type = name;
 }
 
 const std::string&	Weapon::getType( void )const

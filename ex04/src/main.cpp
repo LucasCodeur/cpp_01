@@ -15,22 +15,33 @@
 
 int	main(int argc, char *argv[])
 {
-	std::ifstream infile(argv[1], std::ios::in);
-	std::ofstream outfile(argv[1], std::ios::out);
+	std::ifstream infile(argv[1]);
+	std::ofstream outfile("text.txt");
+	std::string		temp;
+	std::string		result;
+	std::string		s1;
+	std::string		s2;
+	int				pos;
 
+	(void)argc;
 	if (argc != 3)
 		return (1);
-	if (init_file.is_open()) 
+	s1 = argv[2];
+	s2 = argv[3];
+	int	i = 0;
+	while (getline (infile, temp))
 	{
-		std::cout << "outfile opened successfully.\n";
-
-		// Append content to the outfile
-		outfile << "This text is appended to the file.\n";
-
-		// Close the outfile
-		outfile.close();
-
-		std::cout << "outfile closed.\n";
+		while (temp[i] != '\0')
+		{
+			pos = temp.find(s1);
+			result += temp.substr(0, pos);
+			result += s2;
+			i = pos + s1.length();
+			temp.erase(0, i);
+		}
+		result += '\n';
 	}
+	std::cout << result << "\n";
+	infile.close();
 	return (0);
 }
