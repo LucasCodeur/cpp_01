@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 11:47:13 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/09/09 13:24:08 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/09/10 14:56:46 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/09/16 13:36:35 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_H
+# define HARL_H
 
-Zombie* newZombie( std::string name )
+#include <string>
+
+class	Harl
 {
-	Zombie	*zombie;
-	
-	zombie = new Zombie;
-	zombie->setName(name);
-	return (zombie);
-}
+	public:
+		void complains( std::string level );
+	private:
+		void debug( void );
+		void info( void );
+		void warning( void );
+		void error( void );
+		void complain( std::string level );
+};
+
+#endif

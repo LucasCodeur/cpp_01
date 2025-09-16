@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 11:27:06 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/09/09 11:45:41 by lud-adam         ###   ########.fr       */
+/*   Created: 2025/09/11 17:04:30 by lud-adam          #+#    #+#             */
+/*   Updated: 2025/09/16 15:44:54 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
-Zombie::Zombie() {};
+#include "Harl.hpp"
 
-Zombie::~Zombie( void ) 
+int	main( int argc, char *argv[] )
 {
-	std::cout << this->getName() << ": is dead\n"; 
-}
+	if (argc != 2)
+	{
+		std::cout << "Not enough or too much arguments\n";
+		return (1);
+	}
 
-void	Zombie::announce( void )
-{
-	std::cout << this->getName() << ": BraiiiiiiinnnzzzZ...\n";
-}
+	Harl	harl;
 
-std::string	Zombie::getName( void )
-{
-	return (this->name);
-}
-
-void	Zombie::setName( std::string name )
-{
-	this->name = name;
+	harl.complains(argv[1]);
+	return (0);
 }

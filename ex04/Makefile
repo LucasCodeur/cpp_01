@@ -12,7 +12,7 @@
 
 .PHONY : all clean fclean re debug
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = SedIsForLosers
 # Debugging flags
 CFLAGS_DEBUG = -Wall -Wextra -pthread -g3 -D DEBUG=1
