@@ -22,7 +22,6 @@ P_INC = inc/
 SRC = main.cpp \
 
 INC = \
-	Zombie.hpp \
 
 SRCS = \
 	$(addprefix $(P_SRC), $(SRC)) \

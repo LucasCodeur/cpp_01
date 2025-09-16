@@ -12,8 +12,6 @@
 
 #include <iostream> 
 
-#include "Zombie.hpp"
-
 int	main(void)
 {
 	std::string		hiThisIsBrain;
