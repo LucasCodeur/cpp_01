@@ -6,42 +6,71 @@
 /*   By: lud-adam <lud-adam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 17:04:30 by lud-adam          #+#    #+#             */
-/*   Updated: 2025/09/11 18:22:22 by lud-adam         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:09:56 by lud-adam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <iostream>
 
+bool	writeInfileAndReplace(std::ifstream &infile, const std::string &s1, const std::string &s2);
+
 int	main(int argc, char *argv[])
 {
-	std::ifstream infile(argv[1]);
-	std::ofstream outfile("text.txt");
-	std::string		temp;
-	std::string		result;
-	std::string		s1;
-	std::string		s2;
-	int				pos;
-
-	(void)argc;
-	if (argc != 3)
-		return (1);
-	s1 = argv[2];
-	s2 = argv[3];
-	int	i = 0;
-	while (getline (infile, temp))
+	if (argc != 4)
 	{
-		while (temp[i] != '\0')
-		{
-			pos = temp.find(s1);
-			result += temp.substr(0, pos);
-			result += s2;
-			i = pos + s1.length();
-			temp.erase(0, i);
-		}
-		result += '\n';
+		std::cout << "Error: too much or not enough arguments\n";
+		return (1);
 	}
-	std::cout << result << "\n";
-	infile.close();
+	const std::string s1 = argv[2];
+	if (s1.empty()) 
+	{
+		std::cout << "Error: search string is empty\n";
+		return (1);
+	}
+	std::ifstream infile(argv[1]);
+	if (infile.fail() == true)
+	{
+		std::cout << "Error: cannot open input file\n";
+		return (1);
+	}
+	const std::string	s2 = argv[3];
+	if (writeInfileAndReplace(infile, s1, s2) == false)
+		return (1);
 	return (0);
+}
+
+bool	writeInfileAndReplace(std::ifstream &infile, const std::string &s1, const std::string &s2)
+{
+	std::string		result;
+	std::string		line;
+	std::size_t		pos;
+	std::ofstream outfile("newfile");
+
+	if (outfile.fail() == true)
+	{
+		std::cout << "Error: cannot create output file\n";
+		return (false);
+	}
+	while (getline (infile, line))
+	{
+		result.clear();
+		while (!line.empty())
+		{
+			pos = line.find(s1);
+			if (pos == std::string::npos)
+			{
+				result += line;
+				break ;
+			}
+			else
+			{
+				result += line.substr(0, pos);
+				result += s2;
+			}
+			line.erase(0, pos + s1.length());
+		}
+		outfile << result << '\n';
+	}
+	return (true);
 }
