@@ -23,24 +23,12 @@ void Harl::complains( std::string level )
 		case(0):
 			this->complain("DEBUG");
 			std::cout << '\n';
-			this->complain("INFO");
-			std::cout << '\n';
-			this->complain("WARNING");
-			std::cout << '\n';
-			this->complain("ERROR");
-			break ;
 		case(1):
 			this->complain("INFO");
 			std::cout << '\n';
-			this->complain("WARNING");
-			std::cout << '\n';
-			this->complain("ERROR");
-			break ;
 		case(2):
 			this->complain("WARNING");
 			std::cout << '\n';
-			this->complain("ERROR");
-			break ;
 		case(3):
 			this->complain("ERROR");
 			break ;

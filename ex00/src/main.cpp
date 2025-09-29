@@ -15,10 +15,13 @@
 int	main(void)
 {
 	Zombie	*nightmareLuffy;
+	Zombie	foo;
 	
 	nightmareLuffy = newZombie("Nightmare Luffy");
+	foo.setName("foo");
 	randomChump("Oz");
 	nightmareLuffy->announce();
+	foo.announce();
 	delete nightmareLuffy;
 	return (0);
 }
