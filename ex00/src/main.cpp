@@ -18,6 +18,8 @@ int	main(void)
 	Zombie	foo;
 	
 	nightmareLuffy = newZombie("Nightmare Luffy");
+	if (!nightmareLuffy)
+		return (1);
 	foo.setName("foo");
 	randomChump("Oz");
 	nightmareLuffy->announce();
