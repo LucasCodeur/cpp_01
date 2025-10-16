@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 
@@ -30,7 +31,7 @@ int	main(int argc, char *argv[])
 	}
 	std::string temp = argv[1];
 	temp += ".replace";
-	std::ifstream infile(argv[1]);
+	std::ifstream infile(argv[1], std::ios::binary);
 	if (infile.fail() == true)
 	{
 		std::cout << "Error: cannot open input file\n";
@@ -52,27 +53,30 @@ bool	writeInfileAndReplace(std::ifstream& infile, std::ofstream& outfile, const 
 {
 	std::string		result;
 	std::string		line;
+	const size_t	size_bloc = 4096;
+	char			bloc[size_bloc];
 	std::size_t		pos;
 
-	while (getline (infile, line))
+
+	while (infile.read(bloc, size_bloc) || infile.gcount() > 0)
 	{
-		result.clear();
-		while (!line.empty())
-		{
-			pos = line.find(s1);
-			if (pos == std::string::npos)
-			{
-				result += line;
-				break ;
-			}
-			else
-			{
-				result += line.substr(0, pos);
-				result += s2;
-			}
-			line.erase(0, pos + s1.length());
-		}
-		outfile << result << '\n';
+		line.append(bloc, infile.gcount());
 	}
+	while (line.empty() == false)
+	{
+		pos = line.find(s1);
+		if (pos == std::string::npos)
+		{
+			result += line;
+			break ;
+		}
+		else
+		{
+			result += line.substr(0, pos);
+			result += s2;
+		}
+		line.erase(0, pos + s1.length());
+	}
+	outfile << result;
 	return (true);
 }
